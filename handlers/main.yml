@@ -13,7 +13,7 @@
 
 - name: Rebuild virtual_aliases database
   ansible.builtin.command:
-    cmd: postmap "{{ postfix_recipient_access_path }}"
+    cmd: postmap "{{ postfix_virtual_alias_maps }}"
   changed_when: true
 
 - name: Rebuild recipient_access database

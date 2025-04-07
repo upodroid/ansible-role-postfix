@@ -33,3 +33,5 @@ _postfix_compatibility_level:
   bookworm: 3.6
 
 postfix_compatibility_level: "{{ _postfix_compatibility_level[ansible_distribution_release] | default(_postfix_compatibility_level['default']) }}"
+
+postfix_virtual_alias_maps: /etc/postfix/virtual
