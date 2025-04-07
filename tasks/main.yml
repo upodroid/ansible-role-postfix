@@ -28,7 +28,7 @@
   when:
     - (postfix_virtual_mailbox_maps is defined and "'mysql' in postfix_virtual_mailbox_maps) or
       (postfix_virtual_mailbox_domains is defined and 'mysql' in postfix_virtual_mailbox_domains) or
-      (postix_virtual_alias_maps is defined and 'mysql' in postix_virtual_alias_maps")
+      (postfix_virtual_alias_maps is defined and 'mysql' in postix_virtual_alias_maps")
 
 - name: Configure postfix (transport_maps)
   ansible.builtin.template:
@@ -201,7 +201,7 @@
 
 - name: Configure virtual aliases
   ansible.builtin.lineinfile:
-    path: "{{ postfix_virtual_alias_path }}"
+    path: "{{ postfix_virtual_alias_maps }}"
     regexp: "{{ item.name }}"
     line: "{{ item.name }} {{ item.destination }}"
     mode: "0644"
