@@ -8,18 +8,18 @@ _postfix_daemon_directory:
   Debian: /usr/lib/postfix/sbin
   Suse: /usr/lib/postfix/bin
 
-postfix_daemon_directory: "{{ _postfix_daemon_directory[ansible_os_family] | default(_postfix_daemon_directory['default']) }}"
+postfix_daemon_directory: "{{ _postfix_daemon_directory[ansible_facts['os_family']] | default(_postfix_daemon_directory['default']) }}"
 
 _postfix_alias_path:
   default: /etc/aliases
   Alpine: /etc/postfix/aliases
 
-postfix_alias_path: "{{ _postfix_alias_path[ansible_os_family] | default(_postfix_alias_path['default']) }}"
+postfix_alias_path: "{{ _postfix_alias_path[ansible_facts['os_family']] | default(_postfix_alias_path['default']) }}"
 
 _postfix_smtp_generic_path:
   default: /etc/postfix/generic
 
-postfix_smtp_generic_path: "{{ _postfix_smtp_generic_path[ansible_os_family] | default(_postfix_smtp_generic_path['default']) }}"
+postfix_smtp_generic_path: "{{ _postfix_smtp_generic_path[ansible_facts['os_family']] | default(_postfix_smtp_generic_path['default']) }}"
 
 postfix_recipient_access_path: /etc/postfix/recipient_access
 
@@ -35,12 +35,12 @@ _postfix_group:
   default: postdrop
   Suse: maildrop
 
-postfix_group: "{{ _postfix_group[ansible_os_family] | default(_postfix_group['default']) }}"
+postfix_group: "{{ _postfix_group[ansible_facts['os_family']] | default(_postfix_group['default']) }}"
 
 _postfix_lmdb_package:
   default: postfix-lmdb
 
-postfix_lmdb_package: "{{ _postfix_lmdb_package[ansible_os_family] | default(_postfix_lmdb_package['default']) }}"
+postfix_lmdb_package: "{{ _postfix_lmdb_package[ansible_facts['os_family']] | default(_postfix_lmdb_package['default']) }}"
 
 _postfix_compatibility_level:
   default: '2'
@@ -49,7 +49,7 @@ _postfix_compatibility_level:
   bookworm: '3.6'
   trixie: '3.10'
 
-postfix_compatibility_level: "{{ _postfix_compatibility_level[ansible_distribution_release] | default(_postfix_compatibility_level['default']) }}"
+postfix_compatibility_level: "{{ _postfix_compatibility_level[ansible_facts['distribution_release']] | default(_postfix_compatibility_level['default']) }}"
 
 # Resolved variables for main.cf configuration (replacing Jinja in tasks)
 # These variables handle string/list conversion and conditional prefix building
