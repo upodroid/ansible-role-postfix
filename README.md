@@ -52,9 +52,9 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for postfix
 
 # These settings are required in postfix.
-postfix_myhostname: "{{ ansible_fqdn }}"
-postfix_mydomain: "{{ ansible_domain | default('localdomain', true) }}"
-postfix_myorigin: "{{ ansible_domain | default('localdomain', true) }}"
+postfix_myhostname: "{{ ansible_facts['fqdn'] }}"
+postfix_mydomain: "{{ ansible_facts['domain'] | default('localdomain', true) }}"
+postfix_myorigin: "{{ ansible_facts['domain'] | default('localdomain', true) }}"
 
 # To "listen" on public interfaces, set inet_interfaces to something like
 # "all" or the name of the interface, such as "eth0".
