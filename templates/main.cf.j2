@@ -821,6 +821,8 @@ virtual_alias_domains = {{ _postfix_virtual_alias_domains | trim }}
 
 {% if postfix_virtual_alias_maps is defined %}
 virtual_alias_maps = {{ postfix_virtual_alias_maps }}
+{% elif postfix_virtual_aliases is defined %}
+virtual_alias_maps = lmdb:{{ postfix_virtual_alias_path }}
 {% endif %}
 
 {% if postfix_virtual_uid_maps is defined %}

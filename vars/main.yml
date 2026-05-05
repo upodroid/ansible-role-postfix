@@ -25,6 +25,8 @@ postfix_recipient_access_path: /etc/postfix/recipient_access
 
 postfix_sender_access_path: /etc/postfix/sender_access
 
+postfix_virtual_alias_path: /etc/postfix/virtual
+
 postfix_sender_dependent_relayhost_map_path: /etc/postfix/sender_relayhost_maps
 
 postfix_sender_canonical_map_path: /etc/postfix/sender_canonical_maps
@@ -43,11 +45,11 @@ _postfix_lmdb_package:
 postfix_lmdb_package: "{{ _postfix_lmdb_package[ansible_facts['os_family']] | default(_postfix_lmdb_package['default']) }}"
 
 _postfix_compatibility_level:
-  default: '2'
-  jammy: '3.6'
-  noble: '3.6'
-  bookworm: '3.6'
-  trixie: '3.10'
+  default: "2"
+  jammy: "3.6"
+  noble: "3.6"
+  bookworm: "3.6"
+  trixie: "3.10"
 
 postfix_compatibility_level: "{{ _postfix_compatibility_level[ansible_facts['distribution_release']] | default(_postfix_compatibility_level['default']) }}"
 
